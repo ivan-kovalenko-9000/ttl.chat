@@ -21267,7 +21267,7 @@ var TestComponent = exports.TestComponent = function (_React$Component) {
                 _react2.default.createElement(
                     "button",
                     { onClick: this.onLike },
-                    "Like me"
+                    "Add like"
                 )
             );
         }
