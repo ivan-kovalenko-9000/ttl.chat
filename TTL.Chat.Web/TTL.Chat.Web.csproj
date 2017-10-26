@@ -79,8 +79,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\index.jsx" />
+    <Content Include="app\test-component\test.jsx" />
     <Content Include="package.json" />
     <Content Include="package-lock.json" />
+    <Content Include=".babelrc" />
+    <Content Include="webpack.config.js" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -103,7 +107,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\" />
     <Folder Include="App_Data\" />
     <Folder Include="public\" />
   </ItemGroup>
