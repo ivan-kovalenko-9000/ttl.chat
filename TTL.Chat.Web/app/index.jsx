@@ -1,13 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { TestComponent } from "./test-component/test.jsx";
+import { ChatComponent } from "./chat/chat.component.jsx";
+
 
 class App extends React.Component {
     render() {
         return (
             <div>
-                <p> Hello React project</p>
-                <TestComponent />
+                <ChatComponent />
             </div>
         );
     }

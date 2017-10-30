@@ -1,0 +1,13 @@
+.chat {
+  margin: 50px auto;
+  width: 300px;
+}
+.chat ul {
+  list-style: none;
+  padding: 0;
+}
+.chat input {
+  width: 80%;
+}
+
+/*# sourceMappingURL=styles.css.map*/
