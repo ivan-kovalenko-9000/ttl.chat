@@ -113,6 +113,7 @@
     <Content Include="app\index.jsx" />
     <Content Include="app\messaging\hubs.service.js" />
     <Content Include="app\messaging\hubs.singleton.js" />
+    <Content Include="ls-subscriptions.js" />
     <Content Include="package.json" />
     <Content Include="package-lock.json" />
     <Content Include=".babelrc" />
