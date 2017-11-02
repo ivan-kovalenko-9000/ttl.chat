@@ -52,6 +52,9 @@ var SubscriptionManager = {
         $(document).on(SubscriptionManager.OBJECT_NODE_REMOVED_EVENT, SubscriptionManager.HandleObjectNodeRemovedEvent);
 
         SubscriptionManager.DomMutationObserver.observe(targetNode, observerConfig);
+        SubscriptionManager.MonitorHubEvents();
+    },
+    MonitorHubEvents: function () {
         if (!ObjectEventingHub.Bind()) {
             SubscriptionManager.Log('Failed to bind subscription hub. Object subscriptions are disabled...');
         }
@@ -198,6 +201,12 @@ var SubscriptionManager = {
             SubscriptionManager.UnsubscribeFromObjectEvents(objectUri);
         }
     },
+    HandleHubDisconnectedEvent: function (e) {
+        var logMessage = 'Hub disconnected' + e.message;
+        SubscriptionManager.Log(logMessage);
+
+        SubscriptionManager.MonitorHubEvents();
+    },
     RemoveStoredObjectIdInstance: function (objectUri) {
         var instanceCount = undefined;
 
@@ -285,6 +294,10 @@ var ObjectEventingHub = {
                 // Add post start bindings
             });
 
+            $.connection.hub.disconnected(function () {
+                SubscriptionManager.HandleHubDisconnectedEvent();
+            });
+
             return true;
         }
         return false;
@@ -339,7 +352,7 @@ var PresenceMonitor = {
         PresenceMonitor.Monitoring = true;
         setInterval(PresenceMonitor.ProcessMonitoringInterval, PresenceMonitor.Interval);
     },
-    ProcessMonitoringInterval: function() {
+    ProcessMonitoringInterval: function () {
         if (PresenceMonitor.ProcessingInterval) {
             return;
         }
@@ -371,7 +384,7 @@ var PresenceMonitor = {
             PresenceMonitor.ProcessingInterval = false;
         }
     },
-    CheckPresenceState: function(p, s) {
+    CheckPresenceState: function (p, s) {
         if (s === undefined || s == null) {
             s = '';
         }
